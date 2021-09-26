@@ -1,14 +1,8 @@
 // Importing React and other important libraries
 import React from "react";
 
-const Todos: React.FC<{ items: string[] }> = (props) => {
-  return (
-    <ul>
-      {props.items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
+const Todo: React.FC<{ id: string; text: string }> = (props) => {
+  return <li key={props.id}>{props.text}</li>;
 };
 
-export default Todos;
+export default Todo;
