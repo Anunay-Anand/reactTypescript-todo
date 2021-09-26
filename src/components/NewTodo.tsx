@@ -1,8 +1,15 @@
 // Importing React and other important libraries
 import React from "react";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { TodosContext } from "../store/todos-context";
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+// Importing css and other assets
+import classes from "./NewTodo.module.css";
+
+const NewTodo: React.FC = () => {
+  // Using Context to add Todo
+  const ctx = useContext(TodosContext);
+
   // Using useRef to get input
   const todoInputRef = useRef<HTMLInputElement>(null);
 
@@ -19,11 +26,11 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
     }
 
     // Sending value to parent
-    props.onAddTodo(enteredText);
+    ctx.addTodo(enteredText);
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <label htmlFor="todo">Todo Text</label>
       <input type="text" id="todo" name="todo" ref={todoInputRef}></input>
       <button type="submit">Add task</button>
