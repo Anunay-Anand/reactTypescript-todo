@@ -11,7 +11,7 @@ const TodosList: React.FC<{ items: Todo[] }> = (props) => {
   return (
     <ul>
       {props.items.map((item) => (
-        <Todos id={item.id} text={item.text} />
+        <Todos key={item.id} text={item.text} />
       ))}
     </ul>
   );
